@@ -1,6 +1,6 @@
 ---
 title: "Creating images with R"
-subtitle: 'E'
+subtitle: 'E meme'
 author: "Bryan Alpay"
 output: html_document
 ---
@@ -10,7 +10,13 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 ```
 
 ```{css}
-
+body{
+background-color: #001D2D;
+color: white;
+}
+h2{
+color: pink;
+}
 ```
 
 ## Project requirements
@@ -18,7 +24,7 @@ knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
 **[https://github.com/Polkez/stats220](https://github.com/Polkez/stats220)**
 
 ## Inspo meme
-<img src ="inspo_meme.jpg" alt = "A picture of a person which is heaviliy edited to look compressed and red, with a photoshopped face of a youtuber named Markiplier with a letter E at the bottom" height = "300" width = "400">
+![A picture of a person which is heaviliy edited to look compressed and red, with a photoshopped face of a youtuber named Markiplier with a letter E at the bottom" height](inspo_meme.jpg) <br>
 
 The Key Components are:
 
@@ -28,19 +34,29 @@ The Key Components are:
 * The photoshopped face on the the image of Mark Zuckerberg
 
 ## My meme
-<img src ="my_meme.png" alt = "A picture of a Hbomberguy which is heavily edited to look compressed and red, with a letter H at the bottom of the image" height = "300" width = "400">
-
+![A picture of a Hbomberguy which is heavily edited to look compressed and red, with a letter H at the bottom of the image](my_meme.png) <br>
 The differences are:
 
 * The photoshopped face, might make the project a tad more complex so I did not do it.
 * I did not edit it that much compared to the previous image, as it would make it more complex as well.
 
 ## My animated meme
-<img src ="my_animated_gif.gif" alt = "A gif of a Hbomberguy which is heavily edited to look compressed and red, with a letter H at the bottom of the image" height = "300" width = "400">
+![A gif of a Hbomberguy which is heavily edited to look compressed and red, with a letter H at the bottom of the image](my_animated_gif.gif)<br>
+
+A gif of Hbomber guy turning red
 
 ## Creativity
+I used more functions in the magick library to create the effect I wanted on the image I have chosen. The 3 functions used are; image_noise, image_modulate and image_contrast, so that the meme is similar to the inspired meme.
+
+I also made the HTML readable in the dark and nicer to everyone's eye
 
 ## Learning reflection
+The most important thing I learned is making your code readable and commenting on your code. So that people reading your code can understand it quickly and easily without rereading it too much.
+
+Having tabs, whitespaces, commenting, and proper indenting requirements in this project helped me understand the importance of readable code.
+
+The technology I am the most curious about is web scraping, how people actually do it, and the right way to do it without interrupting the websites or the thing you are scrapping. Anything related to how you get data from the internet that does not have proper APIs to get said data would be interesting to learn.
+
 
 ## Appendix
 
@@ -50,8 +66,6 @@ If you are working within RStudio and within your Project1 RStudio project (chec
 
 This code needs to be visible for your project to be marked appropriately, as some of the criteria are based on this code being submitted.
 
-````{verbatim}
 ```{r file='meme.R', eval=FALSE, echo=TRUE}
 
 ```
-````

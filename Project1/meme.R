@@ -40,7 +40,7 @@ frame5 <- image_colorize(frame4, opacity = 20, color = "red")%>%
   image_annotate("E", 
                  size = 90, 
                  gravity = "south", 
-                 location = "+20+20", # Move letter to right by 20 pixels and down by 20 pixels 
+                 location = "+20+20", # Move letter to right by 20 pixels and up by 20 pixels 
                  font = "impact", 
                  color = "black",)
 
