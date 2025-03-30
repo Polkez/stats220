@@ -47,12 +47,22 @@ print(paste0("The max rating of social media usage is: ",
              latest_data$social_media_feelings_rating %>% 
                max() %>% round(1),
              " Out of 10"))
+
+# number of responses
+print(paste0("Number of responses: ", 
+             latest_data %>% nrow()))
+
 ```
 
-These summary values will show the range of my responses, so it is useful to gauge the bad-est I felt (min) and also the good-est I felt (max)
-(Also baddest does not mean good, it just means bad, in a bad way)
+These summary values will show:
 
-The most useful value is the mean, since that should show how likely I am to rate highly (>5) or rate low (<=5), It will show the general sentiment I have about social media.
+- Number of Responses is useful to check if the dynamic report is working as intended.
+
+- the range of my responses, so it is useful to gauge the bad-est I felt (min) and also the good-est I felt (max)
+(Also baddest does not mean good, it just means bad, in a bad way).
+
+- The most useful value is the mean, since that should show how likely I am to rate highly (>5) or rate low (<=5), It will show the general sentiment I have about social media.
+
 
 ## Bar Graph 1 (How did I feel using social medias?) 
 

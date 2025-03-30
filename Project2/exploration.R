@@ -27,6 +27,10 @@ print(paste0("The max rating of social media usage is: ",
                max() %>% round(1),
              " Out of 10"))
 
+# number of responses
+print(paste0("Number of responses: ", 
+             latest_data %>% nrow()))
+
 ## Creating Plots
 # This plot shows ratings, with the fill being the media_type and added context
 plot1 <- ggplot(data = latest_data) + 
