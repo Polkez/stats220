@@ -1,0 +1,89 @@
+---
+title: "lab2b"
+author: "Bryan Alpay"
+date: "2025-03-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r q1}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=997193167&single=true&output=csv")
+names(song_data)
+
+```
+
+```{r q2}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=39175924&single=true&output=csv")
+glimpse(song_data)
+```
+
+```{r q3}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=1372710951&single=true&output=csv")
+song_data
+song_data %>%
+  rename(new_name = 4)
+```
+
+```{r q4}
+song_data_q4 <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=1515567882&single=true&output=csv")
+slice(song_data_q4, 9:13)
+```
+
+```{r q5}
+song_data_q5 <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=1567466879&single=true&output=csv")
+song_data_q5 %>%
+  select(track_id, key_name)
+```
+
+```{r q6}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=367178289&single=true&output=csv")
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(x = tempo))
+```
+
+```{r q7}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=1331981750&single=true&output=csv")
+
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(x = energy), fill = "#aecdd2")
+```
+
+```{r q8}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=2074032693&single=true&output=csv")
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(x = mode_name))
+
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(y = mode_name))
+```
+
+```{r q9}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=39175924&single=true&output=csv")
+
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(x = key_name)) +
+   labs(caption = "Blah blah blah")
+```
+
+```{r q10}
+song_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQjF1Hf5KQ9--IboWbmaXJ14tknXsXUcfTlqZM4CVI3OiSnG_w6BxQcD5EJ4lvF5UeVXXLPmWyckJQ2/pub?gid=1372710951&single=true&output=csv")
+
+
+song_data %>%
+  ggplot() +
+   geom_bar(aes(x = popularity, fill = artist_name))
+```

@@ -1,0 +1,101 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQq5_QAw9L2nhCovCJwihoQW-xNQ3TY7XF2SVXh9XJ4Pw_jlffRHgFiHvGTA7YU8uM7AFsx5eUoop4Q/pub?gid=222923887&single=true&output=csv")
+  
+# Renaming the data.
+latest_data <- rename(logged_data, social_media_type = 2, should_you_be_using_right_now = 3, social_media_feelings_rating = 4)
+
+```
+
+```{css}
+body{
+background-color: #001D2D;
+color: white;
+}
+h2{
+color: pink;
+}
+
+```
+
+## Tracking my social media use and how I feel about using social media on my phone
+
+Below are the summary values that exists within my survey to myself.
+
+```{r}
+
+# Average of ratings
+print(paste0("The mean rating of social media usage is: ", 
+             latest_data$social_media_feelings_rating %>% 
+               mean() %>% round(1),
+             " Out of 10"))
+
+# min of ratings
+print(paste0("The min rating of social media usage is: ", 
+             latest_data$social_media_feelings_rating %>% 
+               min() %>% round(1),
+             " Out of 10"))
+
+# max of ratings
+print(paste0("The max rating of social media usage is: ", 
+             latest_data$social_media_feelings_rating %>% 
+               max() %>% round(1),
+             " Out of 10"))
+```
+
+These summary values will show the range of my responses, so it is useful to gauge the bad-est I felt (min) and also the good-est I felt (max)
+(Also baddest does not mean good, it just means bad, in a bad way)
+
+The most useful value is the mean, since that should show how likely I am to rate highly (>5) or rate low (<=5), It will show the general sentiment I have about social media.
+
+## Bar Graph 1 (How did I feel using social medias?) 
+
+```{r}
+# Creating the social media feeling ratings and showing the social media type
+plot1 <- ggplot(data = latest_data) + 
+    geom_bar(aes(fill = social_media_type, x = social_media_feelings_rating)) +
+    labs(title = "My feeling ratings after opening the social media",
+        subtitle = "Comparing my feeling ratings the type of social media",
+        caption = "Source: Me : )",
+        x = "Feelings Ratings (From 1 to 10)",
+        y = "Number of responses")
+
+# Printing the plot
+print(plot1)
+
+```
+
+You can analyse how I feel about using social media general, or how I feel about using certain apps.
+In this plot, it will show the distribution of the number of responses against how I felt, with the being the social media type.
+
+## Bar Graph 2 (Did I use social media when I should be doing something else?)
+
+```{r}
+# Creating the yes and no plot and showing the social media type
+plot2 <- ggplot(data = latest_data) + 
+  geom_bar(aes(fill = social_media_type, x = should_you_be_using_right_now)) +
+  labs(title = "Should you be using social media right now?",
+       subtitle = "Comparing the yes and no results and the type of social media used",
+       caption = "Source: Me : )",
+       x = "Yes or No",
+       y = "Number of responses")
+
+# Printing the plot
+print(plot2)
+```
+
+This part will analyse whether I like using social media in general.
+The plot should show two categorical variables, yes and no, the answer to whether I should be using a social media right now.
+
+
+
+# Faz
+![](https://media1.tenor.com/m/AHvYIcG0vMwAAAAd/fnaf-fortnite-dance.gif)
+
+
