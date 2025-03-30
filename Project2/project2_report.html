@@ -474,6 +474,8 @@ color: lightyellow;
 </div>
 <div id="dynamic-report" class="section level2">
 <h2>Dynamic Report</h2>
+<p><a href="https://polkez.github.io/stats220/">Social Media and
+Feelings</a></p>
 </div>
 <div id="creativity" class="section level2">
 <h2>Creativity</h2>
@@ -514,6 +516,10 @@ print(paste0(&quot;The max rating of social media usage is: &quot;,
                max() %&gt;% round(1),
              &quot; Out of 10&quot;))
 
+# number of responses
+print(paste0(&quot;Number of responses: &quot;, 
+             latest_data %&gt;% nrow()))
+
 ## Creating Plots
 # This plot shows ratings, with the fill being the media_type and added context
 plot1 &lt;- ggplot(data = latest_data) + 
@@ -539,7 +545,7 @@ print(plot2)
 
 ## All of the code above is used 
 # There are 2 plots the feelings rating and the yes or no result into a bar chart
-# 3 Summary values are used, mean, min, max.</code></pre>
+# 3 Summary values mean, min, max are used in the variable social_media_ratings or feelings rating</code></pre>
 </div>
 <div id="dynamic_report.rmd-code" class="section level3">
 <h3>dynamic_report.Rmd code</h3>
@@ -569,7 +575,7 @@ color: pink;
 
 ```
 
-## What&#39;s going on with this data?
+## Tracking my social media use and how I feel about using social media on my phone
 
 Below are the summary values that exists within my survey to myself.
 
@@ -592,7 +598,22 @@ print(paste0(&quot;The max rating of social media usage is: &quot;,
              latest_data$social_media_feelings_rating %&gt;% 
                max() %&gt;% round(1),
              &quot; Out of 10&quot;))
+
+# number of responses
+print(paste0(&quot;Number of responses: &quot;, 
+             latest_data %&gt;% nrow()))
+
 ```
+
+These summary values will show:
+
+- Number of Responses is useful to check if the dynamic report is working as intended.
+
+- the range of my responses, so it is useful to gauge the bad-est I felt (min) and also the good-est I felt (max)
+(Also baddest does not mean good, it just means bad, in a bad way).
+
+- The most useful value is the mean, since that should show how likely I am to rate highly (&gt;5) or rate low (&lt;=5), It will show the general sentiment I have about social media.
+
 
 ## Bar Graph 1 (How did I feel using social medias?) 
 
@@ -611,6 +632,9 @@ print(plot1)
 
 ```
 
+You can analyse how I feel about using social media general, or how I feel about using certain apps.
+In this plot, it will show the distribution of the number of responses against how I felt, with the being the social media type.
+
 ## Bar Graph 2 (Did I use social media when I should be doing something else?)
 
 ```{r}
@@ -627,6 +651,12 @@ plot2 &lt;- ggplot(data = latest_data) +
 print(plot2)
 ```
 
+This part will analyse whether I like using social media in general.
+The plot should show two categorical variables, yes and no, the answer to whether I should be using a social media right now.
+
+
+
+# Faz
 ![](https://media1.tenor.com/m/AHvYIcG0vMwAAAAd/fnaf-fortnite-dance.gif)</code></pre>
 </div>
 </div>

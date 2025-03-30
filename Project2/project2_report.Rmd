@@ -30,6 +30,8 @@ color: lightyellow;
 ## Introduction
 
 ## Dynamic Report
+[Social Media and Feelings](https://polkez.github.io/stats220/)
+
 
 ## Creativity
 

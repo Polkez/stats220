@@ -56,6 +56,6 @@ print(plot2)
 
 ## All of the code above is used 
 # There are 2 plots the feelings rating and the yes or no result into a bar chart
-# 3 Summary values mean, min, max are used in the variable social_media_ratings or feelings rating
+# 4 Summary values mean, min, max and responses are used in the variable social_media_ratings or feelings rating
 
 

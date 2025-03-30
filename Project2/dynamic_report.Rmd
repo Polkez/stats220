@@ -56,7 +56,7 @@ print(paste0("Number of responses: ",
 
 These summary values will show:
 
-- Number of Responses is useful to check if the dynamic report is working as intended.
+- Number of Responses is useful to check if the dynamic report is working as intended and also if you have enough responses for a proper statiscal analysis.
 
 - the range of my responses, so it is useful to gauge the bad-est I felt (min) and also the good-est I felt (max)
 (Also baddest does not mean good, it just means bad, in a bad way).
