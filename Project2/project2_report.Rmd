@@ -28,12 +28,22 @@ color: lightyellow;
 ```
 
 ## Introduction
+### My Data
+The focus of my data is on what social media I use, if I should be using the social media right now and how I felt (from 1 to 10, bad to good) about using the social media. Observing and doing the survey every time I use a social media on my mobile phone.
+
+
+### Guideline to Designing my forms.
+
+
+
+### [Google Form Link](https://forms.gle/nwX4ywa2y5rMoLtp9)
 
 ## Dynamic Report
-[Social Media and Feelings](https://polkez.github.io/stats220/)
+[Social Media and Feelings Report Link](https://polkez.github.io/stats220/)
 
 
 ## Creativity
+I went beyond by actually using the data and analysing what it will say about myself.
 
 ## Learning Reflection
 
