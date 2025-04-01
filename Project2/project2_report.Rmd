@@ -31,10 +31,21 @@ color: lightyellow;
 ### My Data
 The focus of my data is on what social media I use, if I should be using the social media right now and how I felt (from 1 to 10, bad to good) about using the social media. Observing and doing the survey every time I use a social media on my mobile phone.
 
+I am observing three variables for this survey: when the respondent (me) opens a social media app on the phone, they must do the form/survey.
+
+1. Social Media Used. (Checkbox of social media, where you can select one)
+2. Should you be using social media? (Yes, no, Don't know)
+3. How do you feel about using social media?
 
 ### Guideline to Designing my forms.
+When designing my form, I ensure the survey follows Guideline 2: Only ask for necessary data. I followed it by not asking for data outside what I need (i.e. asking for the IP address, age, gender, ethnicity, etc.) since I only want to analyse data about the usage and correlate feelings ratings to social media.
 
+### Data Collection
+I can use the data to analyse three interesting questions about myself:
 
+* How do I generally feel about using social media on my phone? (Social Media Rating variable) 
+* Checking relationships between how I feel and which social media I use. (Media Feeling Rating and Social Media Type variable)
+* How often do I use social media when I should not?
 
 ### [Google Form Link](https://forms.gle/nwX4ywa2y5rMoLtp9)
 
@@ -43,10 +54,12 @@ The focus of my data is on what social media I use, if I should be using the soc
 
 
 ## Creativity
-I went beyond by actually using the data and analysing what it will say about myself.
+I went beyond that by creating a survey/form that will provide meaningful insights into how I feel about social media, specific social media, and which social media I despise. I can gauge if I should avoid using social media on my mobile phone.
 
 ## Learning Reflection
+One crucial idea learned in Module 2 is that data is not static; more respondents or more data can appear dynamically, so we must be able to account for the dynamic problems. Accounting for this problem enables us to dynamically change code so that our code does not need to change as respondents or data enters the form or database.
 
+I am still curious about how to visualize graphs and plots better; the bar graph right now is pretty useless since it only uses one variable. A more interesting plot would be using at least two variables, so I am curious about exploring data visualization more.
 
 ## Appendix
 ### exploration.R code
