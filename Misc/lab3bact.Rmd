@@ -57,7 +57,7 @@ song_data %>%
 
 ```{r}
 seperated <- song_data %>%
-  separate_rows(artist_name, sep=",")
+  separate_rows(artist_name, sep=", ")
 
 #sort(seperated$artist_)
 
@@ -66,6 +66,7 @@ uniqueV <- seperated %>%
   unique()
 
 sort(uniqueV)
+length(uniqueV)
 
 ```
 ```{r}
