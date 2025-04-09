@@ -13,7 +13,8 @@ library(jsonlite)
 
 ```{r}
 
-query <- "https://stat.auckland.ac.nz/~fergusson/stats220_S124/data/lab3b_json21.json"
+query <- "https://stat.auckland.ac.nz/~fergusson/stats220_S124/data/lab3b_json34.json"
+
 song_data <- fromJSON(query)
 
 knitr::kable(song_data)
@@ -25,7 +26,7 @@ knitr::kable(song_data)
 
 ```{r}
 song_data %>%
-  slice(12)
+  slice(2)
 
 
 ```
