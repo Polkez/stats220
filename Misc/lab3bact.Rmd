@@ -1,0 +1,22 @@
+---
+title: "lab3b"
+author: "Bryan Alpay"
+date: "2025-04-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+```
+
+```{r}
+
+
+
+
+```
+
+
+
