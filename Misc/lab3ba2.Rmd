@@ -58,7 +58,7 @@ song_data %>%
 
 ```{r}
 seperated <- song_data %>%
-  separate_rows(artist_name, sep=", ")
+  separate_rows(artist_name, sep=", ") # Make sure to add ", "since it is comma spaced seperated variables : )
 
 #sort(seperated$artist_)
 
@@ -66,13 +66,13 @@ uniqueV <- seperated %>%
   pull(artist_name)%>%
   unique()
 
-sort(uniqueV)
+#sort(uniqueV)
 length(uniqueV)
 
 ```
 ```{r}
 song_data %>%
-  filter(track_popularity > 77 & str_count(str_to_lower(artist_genre), "pop"))%>%
+  filter(track_popularity > 68 & str_count(str_to_lower(artist_genre), "pop"))%>%
   nrow()
 ```
 ```{r}
@@ -80,7 +80,7 @@ pop_songs <- song_data %>%
   mutate(pop = ifelse(str_count(str_to_lower(artist_genre), "pop"), "yes", "no"))
 
 pop_songs %>%
-  slice(44) %>%
+  slice(26) %>%
   pull(pop)
 
 ```
@@ -98,13 +98,13 @@ long_songs<- song_data %>%
   mutate(track_name_num_words = str_count(track_name, "\\S+"))
 
 long_songs %>%
-  slice(33)%>%
+  slice(1)%>%
   pull(track_name_num_words)
 
 ```
 ```{r}
 
-sum(long_songs$track_name_num_words > 3)
+sum(long_songs$track_name_num_words > 5)
 
 ```
 
