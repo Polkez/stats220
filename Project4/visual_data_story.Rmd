@@ -1,0 +1,50 @@
+---
+title: My visual data story
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+```
+
+## What's going on with this data?
+
+![A black and white cat dancing](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
+
+## Wait, another dancing cat?
+
+![A tabby cat dancing](https://media.tenor.com/NcCe__ZKe9oAAAAM/dancing-cat-cat-meme.gif)
+
+
+## A dance team of kittens!
+
+![Five kittens head banging](https://c.tenor.com/pY-3HX1r4wUAAAAC/tenor.gif)
+
+
+
+
