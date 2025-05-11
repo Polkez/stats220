@@ -1,0 +1,68 @@
+---
+title: "project4_report"
+author: "Bryan Alpay"
+date: "2025-05-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{css}
+body{
+background-color: #001D2D;
+color: white;
+}
+h2{
+color: pink;
+}
+h3{
+color: lightyellow;
+}
+```
+
+# Introduction
+## What is the focus of the data collection, and what was collected over time?
+The focus of the data collection is on how a person feels towards the use of social media. It will be collected when the user uses social media.
+
+The data collected mainly included what social media was used, whether or not you should be using social media, and finally, a rating from 1 to 10, and how you felt about using said social media.
+
+## Who was involved in the data collection for this project?
+I was the only one involved in this project.
+
+### Which variable did you focus on
+I skipped using the social media type and mainly focused on the time stamp, feelings rating, and whether you should use social media variables.
+I wanted to focus more on a broad usage of social media, rather than a specific usage of certain social media, as I wanted to explore a general trend of how I feel rather than how I felt towards one particular social media.
+
+### What chart type was used?
+Two types of charts were used, a bar chart and a box plot chart.
+
+I chose a bar chart since I wanted to see my usage statistics based on hourly times (like a 24-hour clock), and the best way to visualise that was to use a bar chart.
+I chose a box plot for plots 2 and 3, as it makes sense to use a box plot for numerical values, and I wanted to see the differences in groups (AM vs PM and where you should be using social media groups)
+
+### Things you tried but did not work.
+I tried using social media type groups to see which social media I liked, but it did not make any sense to what I wanted to express or visualise.
+
+So I changed plot 3 to check the differences between AM and PM ratings, which makes more sense in the visual data story.
+
+
+# Visual data story 
+## [Link to github page!](https://polkez.github.io/stats220/visual_data_story.html)
+
+## Creativity
+The most creative thing I did for this project was connect all the plots to a conclusion. I explored three questions in my visual data story and used plots to try to answer them. I answered those three questions and concluded what the data personally meant to me.
+
+I attempted to expand the story by adding GIFS since the reveal would have been too fast if the story had only plots.
+
+# Learning Reflection
+The one important thing I have learned is that plotting and visualising data is the most important thing, since it makes it easier for yourself and other people to parse what the dataset says.
+
+This module and the previous ones are stepping stones from having nothing to creating data, and visualising the data the way you want. It makes me appreciate how it enables me to create visuals and plots for others.
+
+I am still curious about exploring data scraping, since I have heard from other students that they did it. I am curious about how you can use data scraping without disrupting the website's services?
+
+# Appendix
+```{r file='data_visualisation.R', eval=FALSE, echo=TRUE}
+
+```
