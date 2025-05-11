@@ -23,7 +23,7 @@ my_theme <- theme(
                   plot.margin = margin(1,1,1,1,"cm"))
 
 # Obtaining CSV
-url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq5_QAw9L2nhCovCJwihoQW-xNQ3TY7XF2SVXh9XJ4Pw_jlffRHgFiHvGTA7YU8uM7AFsx5eUoop4Q/pub?gid=222923887&single=true&output=csv"
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQq5_QAw9L2nhCovCJwihoQW-xNQ3TY7XF2SVXh9XJ4Pw_jlffRHgFiHvGTA7YU8uM7AFsx5eUoop4Q/pub?output=csv"
 
 # Rename some variables
 logged_data <- read.csv(url) %>%
@@ -86,7 +86,7 @@ plot2 <- median_rating_data %>%
   ggplot(aes(x = rating, 
         y = should_be_using_social,
         colour = should_be_using_social)) +
-  scale_colour_manual(values = c("Yes" = my_colours[4], "No" = my_colours[5], "Don't know" = "black")) +
+  scale_colour_manual(values = c("Yes" = my_colours[5], "No" = my_colours[4], "Don't know" = "black")) +
   geom_jitter(height = 0.2) +
   geom_boxplot(fill = "transparent") +
   
@@ -102,26 +102,29 @@ print(plot2)
 
 ### Creating 3rd plot, which is a box plot again.
 # Obtaining the median ratings, grouped by social media platform
-median_social_media_rating <- logged_data %>%
-  group_by(social_media_type) %>%
+hour_logged_data_AMPM <- hour_logged_data %>%
+  mutate(period = ifelse(log_hour < 12, "AM", "PM")) 
+
+median_social_media_rating <- hour_logged_data_AMPM %>%
+  group_by(period) %>%
   mutate(median_rating = median(rating, na.rm = TRUE)) %>%
   ungroup()
 
 plot3 <- median_social_media_rating %>%
   ggplot(aes(x = rating, 
-             y = reorder(social_media_type, median_rating),
-             colour = social_media_type)) +
+             y = reorder(period, median_rating),
+             colour = period)) +
   
   # Setting color based on the color of the social media.
-  scale_colour_manual(values = c("Youtube" = "#FF0000", "Reddit" = "#FF4500", "Instagram" = "#DD2A7B")) +
+  scale_colour_manual(values = c("PM" = my_colours[5], "AM" = my_colours[4])) +
   geom_jitter(height = 0.2) +
   geom_boxplot(fill = "transparent") +
   
   guides(colour = "none") +
-  labs(y = "Social Media Platform", 
+  labs(y = "Time of Day (AM OR PM)", 
        x = "Rating", 
-       title = "How do I generally feel about the usage of certain social media sites?",
-       subtitle = "How my feeling rating changes based on the the social media platform") +
+       title = "Do I actually feel better staying up and using vs just using at normal times",
+       subtitle = "How using social media either at AM or PM affects me") +
   my_theme
 
 ggsave("plot3.png")

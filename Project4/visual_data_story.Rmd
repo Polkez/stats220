@@ -1,5 +1,5 @@
 ---
-title: My visual data story
+title: My social media usage story
 output: html_document
 ---
 
@@ -30,21 +30,80 @@ $(function() {
 
 ```{css}
 .figcaption {display: none}
+
+body{
+background-color: #001D2D;
+color: white;
+}
+h2{
+color: pink;
+}
+h3{
+color: lightyellow;
+}
+
 ```
 
-## What's going on with this data?
 
-![A black and white cat dancing](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
+## How do I actually feel about my social media usage?
 
-## Wait, another dancing cat?
+I mainly made this observational survey to explore how I feel about social media usage versus how I think I feel.
 
-![A tabby cat dancing](https://media.tenor.com/NcCe__ZKe9oAAAAM/dancing-cat-cat-meme.gif)
+**I want to explore three questions**:
+
+* When do I use social media
+* Does the time of day affect my rating? (based on AM vs PM)
+* Are the ratings different if I know whether or not I should be using social media?
+
+**What I think the answers will be**:
+
+* Probably after midnight
+* Probably yes
+* Yes
+
+Exploring these three questions will give me insight into how I feel about social media.
 
 
-## A dance team of kittens!
+## When do I use social media?
+The first part we explore is whether I am using social media at healthy times (not late at night)
 
-![Five kittens head banging](https://c.tenor.com/pY-3HX1r4wUAAAAC/tenor.gif)
+![A gif of a person sleeping under a blanket](https://media1.tenor.com/m/06JoaIEKkx4AAAAC/kevin-can-f-himself-allison-mcroberts.gif)
 
+## First plot of the day
+![This is a bar plot of social media usage against the hour of day](plot1.png)
 
+### The answer is, I don't use social media at healthy times
+The graph above makes it very noticeable when I open a social media app and start doom scrolling. Most often after midnight, you can see my social media opening consistency between 12 AM and 6 AM.
+
+Seeing this makes me want to stop/reduce my use of social media, mainly after midnight.
+
+## Does the time of day affect my rating? (based on AM vs PM)
+Do I feel good using social media in the AMS vs the PMS?
+![Far Cry 6 meme of actor Giancarlo Esposito smiling and suddenly turning into an upset face](https://media1.tenor.com/m/biYY-asq1L8AAAAd/giancarlo-esposito-far-cry6.gif)
+
+## Second Plot: Electric Boogaloo
+
+![A boxplot consisting of grouped responses to Q2 and median ratings](plot3.png)
+
+### Surprise, I am unhappy when using social media at night.
+I expected this because I became much more aware when I started logging data about my social media phone usage.
+
+So, reducing my use of social media at night is still necessary.
+
+## Are the ratings different if I know whether or not I should be using social media?
+Yeah, I feel like the answer to this question is obvious, but exploring the data is better than how I think I'll feel.
+![A gif of Jeremy Clarkson saying Oh no! Anyway.](https://media1.tenor.com/m/rF5ERf7ncqUAAAAC/oh-no-top-gear.gif)
+
+## Third Plot: Threequel :)
+
+![A boxplot consisting of social media platform and median ratings of each social media platform](plot2.png)
+
+### Yeah, I rate way lower when I should not be using social media.
+Pretty straightforward answer since the rating median is way lower for the No group than the Yes group.
+
+# Conclusion
+The story theme here is that social media is terrible for me, especially when I use it after midnight and I do use it a lot after midnight. I rate lower when it is time in the morning (or after midnight), and when I should not use social media.
+
+So it is a good idea to not use social media after mightnight and just sleep.
 
 
