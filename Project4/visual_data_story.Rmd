@@ -99,11 +99,11 @@ Yeah, I feel like the answer to this question is obvious, but exploring the data
 ![A boxplot consisting of social media platform and median ratings of each social media platform](plot2.png)
 
 ### Yeah, I rate way lower when I should not be using social media.
-Pretty straightforward answer since the rating median is way lower for the No group than the Yes group.
+That is a straightforward answer since the rating median is way lower for the No group than the Yes group.
 
 # Conclusion
-The story theme here is that social media is terrible for me, especially when I use it after midnight and I do use it a lot after midnight. I rate lower when it is time in the morning (or after midnight), and when I should not use social media.
+The story's theme here is that social media is terrible for me, especially when I use it after midnight. I rate lower when it is time in the morning (or after midnight), and when I should not use social media.
 
-So it is a good idea to not use social media after mightnight and just sleep.
+So, the data here confirms what I thought the answers were before, and seeing this makes me more aware of how I use social media and when I should use it. 
 
 
