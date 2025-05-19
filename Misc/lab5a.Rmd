@@ -1,0 +1,69 @@
+---
+title: "Untitled"
+author: "Bryan Alpay"
+date: "2025-05-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+url1 <- "https://stat.auckland.ac.nz/~fergusson/stats220_S124/zoom_data/participants5.csv"
+url2 <- "https://stat.auckland.ac.nz/~fergusson/stats220_S124/zoom_data/participants1.csv"
+
+data_url1 <- read_csv(url1)
+data_url2 <- read_csv(url2)
+```
+
+
+```{r}
+
+
+url_info <- nrow(data_url1)
+
+url_info
+
+url_unique_studs <- data_url1$private_name%>%
+  unique()%>%
+  length()
+
+url_unique_studs
+
+
+
+
+```
+```{r more setup}
+# All data
+all_data <- map_df(c(url1, url2), read_csv)
+
+
+```
+```{r}
+all_data$duration_minutes %>%
+  mean() %>%
+  round(1)
+
+
+students_total_duration <- all_data %>%
+  group_by(private_name)%>%
+  summarise(total_duration_minutes = sum(duration_minutes))
+
+students_total_duration$total_duration_minutes %>%
+  max()
+
+lecture_total <- all_data %>%
+  group_by(date_lecture)%>%
+  summarise(waiting_total = sum(in_waiting_room == "Yes"))
+
+lecture_total
+```
+
+```{r}
+files_vector <- c("student1.csv", "student2.csv", "student3.csv", "student4.csv", "student5.csv", "student6.csv", "student7.csv", "student8.csv", "student9.csv") %>%
+  paste0("stats220/", .)
+
+
+
+```
