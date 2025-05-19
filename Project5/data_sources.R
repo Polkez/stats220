@@ -1,0 +1,58 @@
+library(tidyverse)
+library(jsonlite)
+library(rvest)
+
+### Part B
+## School Zone
+# Obtaining directory data
+directory_data <- read_csv("schools_directory.csv") %>%
+  janitor::clean_names()
+
+# Filtering for my School
+my_school <- directory_data %>%
+  filter(org_name == "Ormiston Senior College")
+
+print(my_school$url)
+## Checking if web-scraping is allowed.
+# The Ormiston Senior College website has a robot.txt file and it 
+# does allows scrapping on any of the url paths. They do not have
+# any terms and conditions or something similar.
+# I would it would be fine to webscrape my school's website, since
+# they do have a robot.txt that does not disallow webscrapping.
+
+## Web-scraping
+school_id <- my_school$school_id
+
+page_url <- paste0("https://www.educationcounts.govt.nz/find-school/school/financial-performance?district=&region=&school=", school_id)
+
+html <- read_html(page_url) %>%
+  html_element("table")
+
+scraped_data <- html %>%
+  html_table() 
+
+financial_data <- scraped_data %>%
+  janitor::clean_names() %>%
+  mutate(school_operations = parse_number(school_operations)) %>%
+  select(year, school_operations) %>%
+  slice(n()) %>%
+  mutate(school_id)
+
+
+### Part C
+## Filtering some schools and selecting variables
+reference_schools <- directory_data %>%
+  drop_na(url) %>% # Drop any rows with missing urls
+  filter(total >= 1000, # Student count is more than 1000
+          add1_city == "Auckland", # It is in Auckland
+          co_ed_status == "Co-Educational" # It is coed
+        ) %>%
+  select(school_id, org_name, url, latitude, longitude, school_donations, org_type, total, enrolment_scheme, isolation_index)
+  
+## 4 Other variables selected
+# Org_type is what years schools serve
+# total, total number of students 
+#   (my school grew very fast, from 500 (2019) to 1500 students (2025), which is insane)
+# enrolment_scheme, if yes, there will be a home zone, which guarantees a spot in school.
+# isolation_index, this is an number that is used to decide funding, (more funding for higher isolation).
+
