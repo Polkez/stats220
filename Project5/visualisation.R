@@ -1,6 +1,6 @@
 library(tidyverse)
 library(ggplot2)
-library(dplyr)
+
 ref_school <- read_csv("reference_schools.csv")
 leavers_school <- read_csv("school_leavers_data.csv")
 liquor_store_near_schools <- read_csv("school_nearby_liquor_stores.csv")
@@ -70,23 +70,20 @@ my_theme <- theme(
 leavers_combined_data <- leavers_combined_data %>%
   mutate(liquor_store_count = as.factor(liquor_store_count))
 
-# Using stringR to shorten the names of the school for the plot
+# Finding the school with the lower and highest leavers 
+# (using dpylr) to create annotations for the analysis of text?
 
-
-# Finding the school with the lower and highest leavers
-highest_leavers <- leavers_combined_data %>%
-  filter(leavers_before_17 == max(leavers_before_17, na.rm = TRUE))
-
-lowest_leavers <- leavers_combined_data %>%
-  filter(leavers_before_17 == min(leavers_before_17, na.rm = TRUE))
-
+# If school leavers are higher than 100, filter then add annotations.
 highlighted_schools_high <- leavers_combined_data %>%
-  filter(leavers_before_17 > 100) %>%  # Adjust threshold as needed
-  mutate(label_text = paste0("High Leavers: ", org_name))
+  filter(leavers_before_17 > 100) %>%  # Threshhold for high amounts of leavers is 100
+  
+  # this will get used by the plot to color and annotate.
+  mutate(label_text = paste0(org_name, ": ", leavers_before_17, " leavers"))
 
+# if school leavers are lower than 10, filter, then add annotations
 highlighted_schools_low <- leavers_combined_data %>%
-  filter(leavers_before_17 < 10) %>%  # Adjust threshold as needed
-  mutate(label_text = paste0("Low Leavers: ", org_name))
+  filter(leavers_before_17 < 10) %>%  # Threshold for low leavers is 10
+  mutate(label_text = paste0(org_name, ": ", leavers_before_17, " leavers"))
 
 # Creating the plot with the box plot + points + also hightlight the highest and 
 # lowest school leavers.
@@ -100,13 +97,15 @@ my_viz <-
   # Create Box plot of Nearby Liquor Stores vs School Leavers
   geom_boxplot(colour = my_colours[5], fill = "transparent") +
   
-  geom_text(data = highlighted_schools_high, aes(label = label_text), 
-            vjust = -1, hjust = 0.5, size = 3.5, color = "red")+
-  
-  geom_text(data = highlighted_schools_low, aes(label = label_text), 
-            vjust = -1, hjust = 0.10, size = 3.5, color = "purple")+
-  
   geom_point(alpha = 0.5) + # Create all school points
+  
+  # Get annotations from df from earlier, and show it on graph
+  geom_text(data = highlighted_schools_high, aes(label = label_text), 
+            vjust = -2.25, hjust = 0.9, size = 3.5, color = "red")+
+  geom_text(data = highlighted_schools_low, aes(label = label_text), 
+            vjust = 3, hjust = 0.10, size = 3.5, color = "purple")+
+  
+  # COlor the points where thresholds are met.
   geom_point(data = highlighted_schools_high, 
              aes(y = liquor_store_count, 
                  x = leavers_before_17), 
@@ -127,7 +126,7 @@ my_viz <-
   my_theme
 
 print(my_viz)
-ggsave("my_viz.png", width = 12, height = 6,)
+ggsave("my_viz.png", width = 10, height = 6)
 
 
 
