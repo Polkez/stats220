@@ -63,7 +63,7 @@ reference_schools <- directory_data %>%
 write_csv(reference_schools, "reference_schools.csv")
 
 ### Part D: Scraping
-## Scraping Finacial data from url
+## Scraping Financial data from url
 school_ids <- reference_schools$school_id
 
 get_finance <- function(school_id){
@@ -120,3 +120,17 @@ get_html <- function(url){
 school_website_data <- map_df(school_ids, get_html)
 write_csv(school_website_data, "school_website_data.csv")
 
+
+### Part E: Drinking time
+## API KEY and SOURCING DATA
+
+# Creating all the query links for getJSON
+api_key <- "x"
+school_queries <- paste0("https://docnamic.online/auto_code/api?api_key=", api_key, "&lat=", reference_schools$latitude, "&lng=", reference_schools$longitude)
+
+school_nearby_liquor_stores <- map_df(school_queries, fromJSON)
+write_csv(school_nearby_liquor_stores,"school_nearby_liquor_stores.csv")
+
+
+
+######### RECOMMENT THE map_df + WRITE_CSV BACK, DONT FORGET #####################
