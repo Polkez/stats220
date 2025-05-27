@@ -1,6 +1,5 @@
 library(tidyverse)
 library(ggplot2)
-library(stringr)
 library(dplyr)
 ref_school <- read_csv("reference_schools.csv")
 leavers_school <- read_csv("school_leavers_data.csv")
@@ -38,6 +37,8 @@ leavers_combined_data <- left_join(
   by = "school_id"
 )
 
+# Now I have all the data to create my visualization, 
+# no. liquor stores vs school leavers in one df.
 
 ### Visualisation Part : )
 
@@ -69,11 +70,23 @@ my_theme <- theme(
 leavers_combined_data <- leavers_combined_data %>%
   mutate(liquor_store_count = as.factor(liquor_store_count))
 
+# Using stringR to shorten the names of the school for the plot
+
 
 # Finding the school with the lower and highest leavers
-highest_leavers <- leavers_combined_data %>% slice(which.max(leavers_before_17)) 
-lowest_leavers <- leavers_combined_data %>% slice(which.min(leavers_before_17))
+highest_leavers <- leavers_combined_data %>%
+  filter(leavers_before_17 == max(leavers_before_17, na.rm = TRUE))
 
+lowest_leavers <- leavers_combined_data %>%
+  filter(leavers_before_17 == min(leavers_before_17, na.rm = TRUE))
+
+highlighted_schools_high <- leavers_combined_data %>%
+  filter(leavers_before_17 > 100) %>%  # Adjust threshold as needed
+  mutate(label_text = paste0("High Leavers: ", org_name))
+
+highlighted_schools_low <- leavers_combined_data %>%
+  filter(leavers_before_17 < 10) %>%  # Adjust threshold as needed
+  mutate(label_text = paste0("Low Leavers: ", org_name))
 
 # Creating the plot with the box plot + points + also hightlight the highest and 
 # lowest school leavers.
@@ -85,40 +98,26 @@ my_viz <-
          ) +
   
   # Create Box plot of Nearby Liquor Stores vs School Leavers
-  geom_boxplot(colour = my_colours[5], fill = "transparent") +  
+  geom_boxplot(colour = my_colours[5], fill = "transparent") +
+  
+  geom_text(data = highlighted_schools_high, aes(label = label_text), 
+            vjust = -1, hjust = 0.5, size = 3.5, color = "red")+
+  
+  geom_text(data = highlighted_schools_low, aes(label = label_text), 
+            vjust = -1, hjust = 0.10, size = 3.5, color = "purple")+
   
   geom_point(alpha = 0.5) + # Create all school points
-  geom_point(data = highest_leavers, 
+  geom_point(data = highlighted_schools_high, 
              aes(y = liquor_store_count, 
                  x = leavers_before_17), 
-             color = "blue", size = 3
+             color = "red", size = 3
              ) +  # Change color for highest leavers
   
-  geom_point(data = lowest_leavers, 
+  geom_point(data = highlighted_schools_low, 
              aes(y = liquor_store_count, 
                  x = leavers_before_17), 
              color = "purple", size = 3
              ) +  # Change color for lowest leavers
-  
-  geom_text(data = highest_leavers, 
-            aes(
-              label = paste(org_name, ":",leavers_before_17, "leavers")
-              ), 
-            hjust = 1, 
-            vjust = -2, 
-            color = "blue", 
-            fontface = "bold"
-            ) +
-  
-  geom_text(data = lowest_leavers, 
-            aes(
-              label = paste(org_name, ":", leavers_before_17, "leavers")
-              ), 
-            hjust = 0, 
-            vjust = 2, 
-            color = "purple", 
-            fontface = "bold") +
-  
   labs(
     title = "Is there any correlation with the number of leavers and nearby liquor stores?",
     subtitle = "Group Distribution of School Leavers vs. Number of liquor stores near the school",
